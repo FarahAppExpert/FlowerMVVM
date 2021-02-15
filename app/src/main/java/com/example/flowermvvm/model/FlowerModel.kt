@@ -4,14 +4,16 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class FlowerModel(
     @SerializedName("category")
     @Expose
     var category: String? = null,
     @SerializedName("price")
     @Expose
-    var price: Int? = null,
+    var price: Double? = null,
     @SerializedName("instructions")
     @Expose
     var instructions: String? = null,
@@ -28,36 +30,7 @@ data class FlowerModel(
 
 
 
-): Parcelable{
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readValue(Int::class.java.classLoader) as? Int,
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readValue(Int::class.java.classLoader) as? Int) {
-    }
+): Parcelable
+{
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(category)
-        parcel.writeValue(price)
-        parcel.writeString(instructions)
-        parcel.writeString(photo)
-        parcel.writeString(name)
-        parcel.writeValue(productId)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<FlowerModel> {
-        override fun createFromParcel(parcel: Parcel): FlowerModel {
-            return FlowerModel(parcel)
-        }
-
-        override fun newArray(size: Int): Array<FlowerModel?> {
-            return arrayOfNulls(size)
-        }
-    }
 }
