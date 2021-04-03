@@ -1,33 +1,31 @@
 package com.example.flowermvvm.model
 
-import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class FlowerModel(
+class FlowerModel2 (
     @SerializedName("category")
     @Expose
-    var category: String? = null,
+    var category: String? = "Category F",
     @SerializedName("price")
     @Expose
-    var price: Double? = null,
+    var price: Double? = 100.50,
     @SerializedName("instructions")
     @Expose
-    var instructions: String? = null,
+    var instructions: String? = "no instraction",
     @SerializedName("photo")
     @Expose
     var photo: String? = null,
-    @SerializedName ("name")
+    @SerializedName("name")
     @Expose
-    var name: String? = null,
+    var name: String? = "Rose Flower",
     @SerializedName("productId")
     @Expose
-    var productId: Int? = null
-
-): Parcelable
+    var productId: Int? = 5555
+        ) : Parcelable
 {
 
 }
